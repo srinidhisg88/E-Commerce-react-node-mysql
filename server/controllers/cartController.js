@@ -3,7 +3,6 @@
 const cartModel = require("../models/cartModel");
 const { verifyToken } = require('../utils/token'); 
 
-
 exports.getShoppingCart = (req, res) => {
     const userId = req.params.userId;
     cartModel.getShoppingCart(userId)
@@ -20,6 +19,7 @@ exports.addToCart = (req, res) => {
     const { customerId, productId, quantity, isPresent } = req.body;
     cartModel.addToCart(customerId, productId, quantity, isPresent)
         .then(result => {
+            // Ensure product stock is updated via the trigger
             res.send(result);
         })
         .catch(err => {
@@ -40,7 +40,6 @@ exports.removeFromCart = (req, res) => {
             res.status(500).send("Error removing product from cart.");
         });
 };
-
 
 exports.buy = (req, res) => {
     // Extract JWT token from the request headers
@@ -63,11 +62,19 @@ exports.buy = (req, res) => {
 
             cartModel.buy(customerId, address)
                 .then(result => {
-                    res.send(result);
+                    // Automatically generate views after purchase
+                    cartModel.createUserOrderSummaryView()
+                        .then(() => {
+                            res.send(result);
+                        })
+                        .catch(err => {
+                            console.error('Error creating user order summary view:', err.message);
+                            res.status(500).send("Error processing the order.");
+                        });
                 })
                 .catch(err => {
                     console.error(err.message);
-                    res.status(500).send("Error removing product from cart.");
+                    res.status(500).send("Error processing the order.");
                 });
         })
         .catch(err => {
