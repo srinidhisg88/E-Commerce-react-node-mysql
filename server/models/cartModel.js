@@ -1,7 +1,54 @@
-// cartModel.js
+// cartModel.js with Trigger and View Enhancements
 
 const pool = require("../database/connection");
 
+// Trigger: Automatically update product stock on adding items to productsInOrder
+exports.createTriggerForProductStock = () => {
+    return new Promise((resolve, reject) => {
+        const triggerQuery = `
+        CREATE TRIGGER updateProductStock
+        AFTER INSERT ON productsInOrder
+        FOR EACH ROW
+        BEGIN
+            UPDATE product
+            SET stock = stock - NEW.quantity
+            WHERE productId = NEW.productId;
+        END;
+        `;
+
+        pool.query(triggerQuery, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve("Trigger for product stock updates created successfully.");
+            }
+        });
+    });
+};
+
+// View: User Order Summary
+exports.createUserOrderSummaryView = () => {
+    return new Promise((resolve, reject) => {
+        const viewQuery = `
+        CREATE OR REPLACE VIEW userOrderSummary AS
+        SELECT U.userId, CONCAT(U.fname, ' ', U.lname) AS fullName, COUNT(O.orderId) AS totalOrders,
+               SUM(O.totalPrice) AS totalSpent
+        FROM users U
+        JOIN orders O ON U.userId = O.userId
+        GROUP BY U.userId, fullName;
+        `;
+
+        pool.query(viewQuery, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve("View for user order summary created successfully.");
+            }
+        });
+    });
+};
+
+// Existing cartModel.js logic
 exports.getShoppingCart = (userId) => {
     return new Promise((resolve, reject) => {
         pool.query(
