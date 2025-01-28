@@ -73,20 +73,33 @@ exports.updateOrder = (orderId, newData) => {
 };
 
 exports.getPastOrdersByCustomerID = (orderId) => {
-    const query =
-        "SELECT O.orderId, P.name, O.createdDate, PIN.quantity, PIN.totalPrice " +
-        "FROM orders O INNER JOIN productsInOrder PIN ON O.orderId = PIN.orderId  " +
-        "INNER JOIN product P ON PIN.productId = P.productId " +
-        "WHERE O.userId = ? " +
-        "ORDER BY O.orderID DESC;";
     return new Promise((resolve, reject) => {
-        pool.query(query, [orderId], (err, result) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(result);
+        // Step 1: Get the userId from the orderId
+        pool.query(
+            "SELECT userId FROM orders WHERE orderId = ?;",
+            [orderId],
+            (err, userResult) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                if (userResult.length === 0) {
+                    return reject(new Error("Order not found"));
+                }
+
+                const userId = userResult[0].userId;
+
+                // Step 2: Query the PastOrdersView with userId
+                const query = "SELECT * FROM PastOrdersView WHERE userId = ?;";
+                pool.query(query, [userId], (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(result);
+                    }
+                });
             }
-        });
+        );
     });
 };
 

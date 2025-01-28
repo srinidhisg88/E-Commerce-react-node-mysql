@@ -30,12 +30,22 @@ exports.createTriggerForProductStock = () => {
 exports.createUserOrderSummaryView = () => {
     return new Promise((resolve, reject) => {
         const viewQuery = `
-        CREATE OR REPLACE VIEW userOrderSummary AS
-        SELECT U.userId, CONCAT(U.fname, ' ', U.lname) AS fullName, COUNT(O.orderId) AS totalOrders,
-               SUM(O.totalPrice) AS totalSpent
-        FROM users U
-        JOIN orders O ON U.userId = O.userId
-        GROUP BY U.userId, fullName;
+       CREATE OR REPLACE VIEW PastOrdersView AS
+SELECT 
+    O.orderId, 
+    O.userId,
+    P.name AS productName, 
+    O.createdDate, 
+    PIN.quantity, 
+    PIN.totalPrice
+FROM 
+    orders O
+INNER JOIN 
+    productsInOrder PIN ON O.orderId = PIN.orderId
+INNER JOIN 
+    product P ON PIN.productId = P.productId
+ORDER BY 
+    O.orderID DESC;
         `;
 
         pool.query(viewQuery, (err, result) => {
