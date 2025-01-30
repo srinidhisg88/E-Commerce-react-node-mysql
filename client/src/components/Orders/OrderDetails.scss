@@ -1,77 +1,198 @@
+// // OrderDetails.scss
+
+// .order-details-container {
+//     padding: 20px;
+
+//     div {
+//         margin-bottom: 15px;
+//     }
+
+//     label {
+//         font-weight: bold;
+//     }
+
+//     input[type="text"] {
+//         width: 100%;
+//         padding: 10px;
+//         margin-top: 5px;
+//         border: 1px solid #ccc;
+//         border-radius: 3px;
+//         box-sizing: border-box;
+//         background-color: #f9f9f9;
+//         color: #333;
+//         cursor: not-allowed;
+//     }
+
+//     table {
+//         width: 100%;
+//         border-collapse: collapse;
+//         margin-top: 20px;
+
+//         th,
+//         td {
+//             border: 1px solid #ccc;
+//             padding: 8px;
+//             text-align: left;
+//         }
+
+//         th {
+//             background-color: #f2f2f2;
+//         }
+
+//         tr:nth-child(even) {
+//             background-color: #f9f9f9;
+//         }
+
+//         tr:hover {
+//             background-color: #f2f2f2;
+//         }
+//     }
+
+//         /* OrderDetails.scss */
+    
+//         .back-button-container {
+//             margin-bottom: 20px;
+//             /* Adjust margin as needed */
+//         }
+    
+//         .back-button-container button {
+//             background-color: #007bff;
+//             /* Button background color */
+//             color: #fff;
+//             /* Button text color */
+//             border: none;
+//             /* Remove button border */
+//             padding: 10px 20px;
+//             /* Add padding to button */
+//             cursor: pointer;
+//             /* Change cursor to pointer on hover */
+//             border-radius: 5px;
+//             /* Add border-radius to button */
+//         }
+    
+//         .back-button-container button:hover {
+//             background-color: #0056b3;
+//             /* Change background color on hover */
+//         }
+// }
+
 // OrderDetails.scss
 
 .order-details-container {
     padding: 20px;
-
-    div {
-        margin-bottom: 15px;
+  
+    .back-button-container {
+      margin-bottom: 20px;
+      text-align: right;
+  
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+  
+        &:active {
+          background-color: #004085;
+        }
+      }
     }
-
-    label {
-        font-weight: bold;
-    }
-
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        box-sizing: border-box;
-        background-color: #f9f9f9;
+  
+    .order-summary {
+      margin-bottom: 30px;
+  
+      h2 {
+        font-size: 1.5rem;
         color: #333;
-        cursor: not-allowed;
+      }
+  
+      .order-info {
+        .order-field {
+          margin-bottom: 15px;
+  
+          label {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #333;
+          }
+  
+          input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f9f9f9;
+            color: #333;
+            cursor: not-allowed;
+  
+            &:focus {
+              border-color: #007bff;
+              background-color: #fff;
+            }
+          }
+        }
+      }
     }
-
-    table {
+  
+    .products-table {
+      h3 {
+        font-size: 1.25rem;
+        color: #333;
+      }
+  
+      table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
-
+  
         th,
         td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
+          border: 1px solid #ccc;
+          padding: 8px;
+          text-align: left;
         }
-
+  
         th {
-            background-color: #f2f2f2;
+          background-color: #007bff;
+          color: white;
+          padding: 12px;
         }
-
+  
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+          background-color: #f9f9f9;
         }
-
+  
+        tr:nth-child(odd) {
+          background-color: #fff;
+        }
+  
         tr:hover {
-            background-color: #f2f2f2;
+          background-color: #f2f2f2;
         }
+      }
     }
-
-        /* OrderDetails.scss */
-    
-        .back-button-container {
-            margin-bottom: 20px;
-            /* Adjust margin as needed */
-        }
-    
-        .back-button-container button {
-            background-color: #007bff;
-            /* Button background color */
-            color: #fff;
-            /* Button text color */
-            border: none;
-            /* Remove button border */
-            padding: 10px 20px;
-            /* Add padding to button */
-            cursor: pointer;
-            /* Change cursor to pointer on hover */
-            border-radius: 5px;
-            /* Add border-radius to button */
-        }
-    
-        .back-button-container button:hover {
-            background-color: #0056b3;
-            /* Change background color on hover */
-        }
-}
+  }
+  
+  // Responsive design for mobile devices
+  @media (max-width: 768px) {
+    .order-details-container {
+      padding: 10px;
+    }
+  
+    .order-summary .order-info {
+      .order-field input[type="text"] {
+        padding: 8px;
+      }
+  
+      table {
+        font-size: 14px;
+      }
+    }
+  }
+  

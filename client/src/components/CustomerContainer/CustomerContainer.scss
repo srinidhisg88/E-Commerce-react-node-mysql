@@ -1,22 +1,100 @@
+// .customer-container {
+//     margin: 20px;
+// }
+
+// .customer-container button {
+//     // margin-bottom: 10px;
+//     padding: 8px 16px;
+//     background-color: #007bff;
+//     color: #fff;
+//     border: none;
+//     border-radius: 4px;
+//     cursor: pointer;
+// }
+
+// .customer-container button:hover {
+//     background-color: #0056b3;
+// }
+
+// .customer-container .list-container {
+//     margin-top: 20px;
+// }
+//         // Add styling for login button
+
 .customer-container {
-    margin: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.customer-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.customer-container p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    font-weight: 400;
 }
 
 .customer-container button {
-    // margin-bottom: 10px;
-    padding: 8px 16px;
+    padding: 12px 24px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 10px 5px;
+    max-width: 250px;
+    display: inline-block;
 }
 
 .customer-container button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .customer-container .list-container {
-    margin-top: 20px;
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
-        // Add styling for login button
+
+.customer-container .list-container h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Styling for the login button */
+.login-button {
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-button:hover {
+    background: linear-gradient(135deg, #ff3b73, #ff4d7e);
+    transform: scale(1.1);
+}

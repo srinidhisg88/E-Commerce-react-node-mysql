@@ -1,21 +1,61 @@
-// Add styling for login button
+// // Add styling for login button
+// .login-button {
+
+
+//   background-color: black;
+//   color: white;
+//   border: none;
+//   padding: 10px 20px;
+//   border-radius: 5px;
+//   cursor: pointer;
+// }
+
+// .login-button-container {
+//   color: white;
+//   border: none;
+//   padding: 10px 20px;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   display: flex;
+//   flex-direction: row-reverse;
+// }
+
+/* Login Button Styles */
+
 .login-button {
-
-
-  background-color: black;
-  color: white;
+  background-color: #000000;
+  color: #ffffff;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #333333; /* Darker shade for hover effect */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.login-button:active {
+  background-color: #1a1a1a; /* Even darker shade on click */
+  transform: translateY(1px); /* Button presses down */
+}
+
+/* Login Button Container Styles */
+
+.login-button-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;  /* Align the button to the right */
+  padding: 10px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.login-button-container {
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row-reverse;
+.login-button-container:hover {
+  background-color: #f0f0f0;  /* Subtle background change on hover */
+  border-radius: 5px;  /* Keep consistent border-radius */
 }

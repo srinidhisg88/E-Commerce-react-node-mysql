@@ -1,53 +1,169 @@
+// // Login.scss
+
+// .login-container {
+//     max-width: 400px;
+//     margin: 0 auto;
+//     padding: 20px;
+//     border: 1px solid #ccc;
+//     border-radius: 5px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     background-color: #f9f9f9;
+
+//     h1 {
+//         text-align: center;
+//         margin-bottom: 20px;
+//     }
+
+//     label {
+//         display: block;
+//         margin-bottom: 5px;
+//         font-weight: bold;
+//     }
+
+//     input[type="text"],
+//     input[type="password"] {
+//         width: 100%;
+//         padding: 10px;
+//         margin-bottom: 15px;
+//         border: 1px solid #ccc;
+//         border-radius: 3px;
+//         box-sizing: border-box;
+//     }
+
+//     button {
+//         width: 100%;
+//         padding: 10px;
+//         background-color: #007bff;
+//         color: #fff;
+//         border: none;
+//         border-radius: 3px;
+//         cursor: pointer;
+//         transition: background-color 0.3s ease;
+
+//         &:hover {
+//             background-color: #0056b3;
+//         }
+//     }
+
+//     .register-link {
+//         text-align: center;
+//         margin-top: 10px;
+//         color: #007bff;
+//         cursor: pointer;
+//         transition: color 0.3s ease;
+
+//         &:hover {
+//             color: #0056b3;
+//         }
+//     }
+
+//     .error-message {    
+//         color: red;
+//         margin-top: 5px;
+//         font-size: 14px;
+//         margin-bottom: 10px;
+//     }
+// }
+
 // Login.scss
 
 .login-container {
     max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    }
 
     h1 {
-        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
         margin-bottom: 20px;
     }
 
     label {
         display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
+        text-align: left;
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 8px;
+        font-size: 14px;
     }
 
     input[type="text"],
     input[type="password"] {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
-        border-radius: 3px;
+        border-radius: 6px;
         box-sizing: border-box;
+        font-size: 14px;
+        background-color: #f8f9fa;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+        &:focus {
+            border-color: #007bff;
+            box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.4);
+            outline: none;
+        }
+    }
+
+    .password-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        input[type="password"] {
+            width: 100%;
+            padding-right: 40px; // Space for eye icon
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #333;
+            }
+        }
     }
 
     button {
         width: 100%;
-        padding: 10px;
-        background-color: #007bff;
+        padding: 12px;
+        font-size: 16px;
+        background: linear-gradient(135deg, #007bff, #0056b3);
         color: #fff;
         border: none;
-        border-radius: 3px;
+        border-radius: 6px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background 0.3s ease, transform 0.2s ease-in-out;
 
         &:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #0056b3, #004094);
+            transform: scale(1.03);
+        }
+
+        &:active {
+            transform: scale(0.98);
         }
     }
 
     .register-link {
         text-align: center;
-        margin-top: 10px;
+        margin-top: 15px;
+        font-size: 14px;
         color: #007bff;
         cursor: pointer;
         transition: color 0.3s ease;
@@ -57,10 +173,16 @@
         }
     }
 
-    .error-message {    
+    .error-message {
         color: red;
-        margin-top: 5px;
         font-size: 14px;
-        margin-bottom: 10px;
+        margin-top: 8px;
+    }
+}
+
+/* Responsive Styling */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
     }
 }

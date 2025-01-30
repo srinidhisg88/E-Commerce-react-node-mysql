@@ -1,59 +1,149 @@
-// AdminContainer.scss
+// // AdminContainer.scss
+
+// .admin-container {
+//     padding: 20px;
+
+//     button {
+//         padding: 10px 20px;
+//         margin-bottom: 10px;
+//         background-color: #007bff;
+//         color: #fff;
+//         border: none;
+//         border-radius: 5px;
+//         cursor: pointer;
+//         transition: background-color 0.3s ease;
+
+//         &:hover {
+//             background-color: #0056b3;
+//         }
+//     }
+
+//     table {
+//         width: 100%;
+//         border-collapse: collapse;
+//         margin-top: 10px;
+
+//         th,
+//         td {
+//             border: 1px solid #ccc;
+//             padding: 8px;
+//             text-align: left;
+//         }
+
+//         th {
+//             background-color: #f2f2f2;
+//         }
+
+//         tr:nth-child(even) {
+//             background-color: #f9f9f9;
+//         }
+
+//         tr:hover {
+//             background-color: #f2f2f2;
+//         }
+//     }
+
+//     .details-container {
+//         margin-top: 20px;
+//     }
+
+//     input[type="text"],
+//     input[type="password"] {
+//         width: 100%;
+//         padding: 10px;
+//         margin-bottom: 15px;
+//         border: 1px solid #ccc;
+//         border-radius: 3px;
+//         box-sizing: border-box;
+//     }
+// }
 
 .admin-container {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
 
-    button {
-        padding: 10px 20px;
-        margin-bottom: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+button {
+    padding: 12px 24px;
+    margin-bottom: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        &:hover {
-            background-color: #0056b3;
-        }
-    }
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
+.product-list-container, .order-list-container {
+    width: 80%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
 
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-        th {
-            background-color: #f2f2f2;
-        }
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
 
-        tr:hover {
-            background-color: #f2f2f2;
-        }
-    }
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
 
-    .details-container {
-        margin-top: 20px;
-    }
+tr:hover {
+    background-color: #f1f1f1;
+}
 
-    input[type="text"],
-    input[type="password"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        box-sizing: border-box;
-    }
+.details-container {
+    width: 80%;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
 }

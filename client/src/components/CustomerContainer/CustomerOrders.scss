@@ -1,31 +1,121 @@
+// .customer-orders-container {
+//     margin-top: 20px;
+// }
+
+// .customer-orders-container div {
+//     margin-bottom: 10px;
+// }
+
+// .customer-orders-container table {
+//     width: 100%;
+//     border-collapse: collapse;
+// }
+
+// .customer-orders-container th,
+// .customer-orders-container td {
+//     border: 1px solid #ddd;
+//     padding: 8px;
+//     text-align: left;
+// }
+
+// .customer-orders-container th {
+//     background-color: #f2f2f2;
+// }
+
+// .customer-orders-container tbody tr:nth-child(even) {
+//     background-color: #f2f2f2;
+// }
+
+// .customer-orders-container tbody tr:hover {
+//     background-color: #ddd;
+// }
+
 .customer-orders-container {
     margin-top: 20px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.customer-orders-container h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.customer-orders-container p {
+    text-align: center;
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 .customer-orders-container div {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
+/* Table Styling */
 .customer-orders-container table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .customer-orders-container th,
 .customer-orders-container td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
     text-align: left;
+    font-size: 16px;
 }
 
 .customer-orders-container th {
-    background-color: #f2f2f2;
+    background: #007bff;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 3px solid #0056b3;
 }
 
 .customer-orders-container tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f8f9fa;
 }
 
 .customer-orders-container tbody tr:hover {
-    background-color: #ddd;
+    background: #e9ecef;
+    transition: background 0.3s ease;
+}
+
+/* Empty state message */
+.customer-orders-container p {
+    color: #888;
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .customer-orders-container {
+        padding: 10px;
+    }
+
+    .customer-orders-container table {
+        font-size: 14px;
+    }
+
+    .customer-orders-container th,
+    .customer-orders-container td {
+        padding: 10px;
+    }
 }
