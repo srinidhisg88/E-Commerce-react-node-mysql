@@ -72,34 +72,21 @@ exports.updateOrder = (orderId, newData) => {
     });
 };
 
-exports.getPastOrdersByCustomerID = (orderId) => {
+exports.getPastOrdersByCustomerID = (customerId) => {
     return new Promise((resolve, reject) => {
-        // Step 1: Get the userId from the orderId
-        pool.query(
-            "SELECT userId FROM orders WHERE orderId = ?;",
-            [orderId],
-            (err, userResult) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                if (userResult.length === 0) {
-                    return reject(new Error("Order not found"));
-                }
-
-                const userId = userResult[0].userId;
-
-                // Step 2: Query the PastOrdersView with userId
-                const query = "SELECT * FROM PastOrdersView WHERE userId = ?;";
-                pool.query(query, [userId], (err, result) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(result);
-                    }
-                });
+        // Step 1: Query past orders directly using the customerId (which is userId)
+        const query = "SELECT orderId, productName, createdDate, quantity, totalPrice FROM pastordersview WHERE userId = ? ORDER BY createdDate DESC;";
+        
+        pool.query(query, [customerId], (err, result) => {
+            if (err) {
+                return reject(err); // Reject if there is an error in the query
             }
-        );
+
+            if (result.length === 0) {
+                return reject(new Error("No past orders found for this user.")); // Handle case where no past orders are found
+            }
+
+            resolve(result); // Resolve with the past orders
+        });
     });
 };
-

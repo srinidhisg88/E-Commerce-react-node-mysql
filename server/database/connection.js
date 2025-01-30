@@ -12,8 +12,8 @@ if (useLocalhost) {
     connectionParams = {
         user: "root",
         host: "localhost",
-        password: "",
-        database: "e_commerce",
+        password: "password",
+        database: "ecommerce",
     };
 } else {
     connectionParams = {

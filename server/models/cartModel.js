@@ -121,6 +121,7 @@ exports.removeFromCart = (productId, userId) => {
     });
 };
 
+
 exports.buy = (customerId, address) => {
     return new Promise((resolve, reject) => {
         // Create order
@@ -135,7 +136,7 @@ exports.buy = (customerId, address) => {
                     pool.query(
                         "INSERT INTO productsInOrder (orderId, productId, quantity, totalPrice) " +
                         "SELECT (SELECT max(orderId) FROM orders WHERE userId = ?), S.productId, S.quantity, P.price * S.quantity " +
-                        "FROM shopingCart S INNER JOIN product P ON S.productId = P.productId " +
+                        "FROM shoppingCart S INNER JOIN product P ON S.productId = P.productId " +
                         "WHERE S.userId = ?;",
                         [customerId, customerId],
                         (err, productsResult) => {
@@ -155,18 +156,8 @@ exports.buy = (customerId, address) => {
                                         if (err) {
                                             reject(err);
                                         } else {
-                                            // Clear shopping cart
-                                            pool.query(
-                                                "DELETE FROM shopingCart WHERE userId = ?;",
-                                                customerId,
-                                                (err, clearCartResult) => {
-                                                    if (err) {
-                                                        reject(err);
-                                                    } else {
-                                                        resolve({ orderResult, productsResult, totalPriceResult, clearCartResult });
-                                                    }
-                                                }
-                                            );
+                                            // No need to manually clear shopping cart, trigger will do that
+                                            resolve({ orderResult, productsResult, totalPriceResult });
                                         }
                                     }
                                 );
